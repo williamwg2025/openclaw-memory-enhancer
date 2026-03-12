@@ -1,11 +1,11 @@
 ---
 name: memory-enhancer
 displayName: Memory Enhancer
-version: 1.0.0
-description: 记忆增强助手，支持语义搜索、自动提炼、智能分类。让 AI 记住所有重要信息，不再遗漏关键内容。
+version: 1.2.0
+description: 记忆增强助手，支持语义搜索、自动提炼、智能分类、Token 优化、定时任务。让 AI 记住所有重要信息，同时减少 token 消耗。
 license: MIT-0
 acceptLicenseTerms: true
-tags: memory, search, ai, productivity
+tags: memory, search, ai, productivity, optimization, scheduled-tasks
 ---
 
 # Memory Enhancer - 记忆增强助手
