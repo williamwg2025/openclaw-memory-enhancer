@@ -127,10 +127,25 @@ python3 memory-enhancer/scripts/token-optimizer.py
 
 ## 🔒 安全说明
 
-- **本地执行：** 所有脚本在本地运行，不联网
-- **权限范围：** 仅需读取 ~/.openclaw/ 目录
-- **无外部依赖：** 不克隆外部仓库，所有代码已包含
-- **数据安全：** 不上传任何数据到外部服务器
+### 文件写入 ⚠️
+**本技能会写入文件：**
+- **配置：** `skills/memory-enhancer/config/` (token-stats.json 等)
+- **日志：** `skills/memory-enhancer/logs/` (optimizer-schedule.log)
+- **清理：** 可能删除 `memory/` 目录下的旧文件
+
+**只读：** MEMORY.md, SESSION-STATE.md, 会话历史
+
+### 网络访问
+- **不联网：** 所有操作本地执行
+
+### 定时任务
+- 需手动添加 cron 或使用 OpenClaw 内置 cron
+- 建议先手动测试再启用
+
+### 建议
+1. 先运行 `--analyze` 测试
+2. 确认输出符合预期
+3. 启用定时任务前备份 `~/.openclaw/`
 
 ---
 

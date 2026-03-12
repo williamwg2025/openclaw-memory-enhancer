@@ -121,7 +121,7 @@ def compress_memory(keep_days: int = 30) -> dict:
             content = md_file.read_text(encoding='utf-8')
             result['saved_chars'] += len(content)
             result['compressed'] += 1
-            log_info(f"压缩：{md_file.name} ({estimate_tokens(len(content))} tokens)")
+            log_info(f"压缩：{md_file.name} ({estimate_tokens(content)} tokens)")
         else:
             result['kept'] += 1
     

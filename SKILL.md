@@ -1,11 +1,11 @@
 ---
 name: memory-enhancer
 displayName: Memory Enhancer
-version: 1.2.0
-description: 记忆增强助手，支持语义搜索、自动提炼、智能分类、Token 优化、定时任务。让 AI 记住所有重要信息，同时减少 token 消耗。
+version: 1.2.1
+description: 记忆增强助手，支持语义搜索、自动提炼、智能分类、Token 优化、定时任务。会写入配置文件和日志到技能目录。
 license: MIT-0
 acceptLicenseTerms: true
-tags: memory, search, ai, productivity, optimization, scheduled-tasks
+tags: memory, search, ai, productivity, optimization, scheduled-tasks, file-write
 ---
 
 # Memory Enhancer - 记忆增强助手
@@ -59,12 +59,14 @@ python3 memory-enhancer/scripts/classify.py --auto
 
 ## 🛠️ 脚本说明
 
-| 脚本 | 功能 |
-|------|------|
-| `search.py` | 语义搜索 |
-| `summarize.py` | 自动提炼 |
-| `classify.py` | 智能分类 |
-| `cleanup.py` | 过期清理 |
+| 脚本 | 功能 | 写入文件 |
+|------|------|---------|
+| `search.py` | 语义搜索 | ❌ 否 |
+| `summarize.py` | 自动提炼 | ❌ 否 |
+| `classify.py` | 智能分类 | ❌ 否 |
+| `token-optimizer.py` | Token 优化分析 | ✅ config/, logs/ |
+| `scheduled-optimizer.py` | 定时任务 | ✅ config/, logs/ |
+| `cleanup.py` | 过期清理 | ✅ 删除旧文件 |
 
 ---
 
@@ -81,10 +83,40 @@ MIT-0
 
 ## 🔒 安全说明
 
-- **本地执行：** 所有脚本在本地运行，不联网
-- **权限范围：** 仅需读取 ~/.openclaw/ 目录
-- **无外部依赖：** 不克隆外部仓库，所有代码已包含
-- **数据安全：** 不上传任何数据到外部服务器
+### 文件写入 ⚠️
+**本技能会写入文件：**
+- **配置文件：** `~/.openclaw/workspace/skills/memory-enhancer/config/`
+  - `token-stats.json` - Token 使用统计
+  - `token-optimizer-schedule.json` - 定时任务配置
+- **日志文件：** `~/.openclaw/workspace/skills/memory-enhancer/logs/`
+  - `optimizer-schedule.log` - 定时任务执行日志
+- **记忆文件：** `~/.openclaw/workspace/memory/`
+  - 每日记忆文件（由其他技能创建，本技能可能清理）
+
+**只读操作：**
+- 读取 `~/.openclaw/workspace/MEMORY.md`
+- 读取 `~/.openclaw/workspace/SESSION-STATE.md`
+- 读取会话历史（不修改）
+
+### 网络访问
+- **不联网：** 所有操作在本地执行
+- **无外部依赖：** 不克隆外部仓库
+
+### 定时任务 ⚠️
+**如启用定时任务：**
+- 需要手动添加 cron 条目到系统 crontab
+- 或使用 OpenClaw 内置 cron（推荐）
+- 定时任务会定期执行写入操作
+
+**建议：**
+1. 先手动运行测试（`--analyze`）
+2. 确认输出符合预期
+3. 再启用定时任务
+
+### 数据安全
+- **本地存储：** 所有数据保存在本地
+- **不上传：** 不发送数据到外部服务器
+- **建议备份：** 启用定时任务前备份 `~/.openclaw/`
 
 ---
 
