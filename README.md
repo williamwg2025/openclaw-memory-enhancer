@@ -1,5 +1,51 @@
 # Memory Enhancer - 记忆增强助手
 
+
+## 🎯 推荐安装场景
+
+✅ **你应该安装这个技能，如果：**
+- [ ] 你希望 AI 记住对话内容
+- [ ] 你需要长期记忆功能
+- [ ] 你想优化 token 消耗
+- [ ] 你需要语义搜索记忆
+
+❌ **不需要安装，如果：**
+- [ ] 你不需要记忆功能
+- [ ] 你使用外部记忆系统
+
+---
+
+## ⭐ 觉得好用？
+
+如果喜欢这个技能，请：
+1. 在 ClawHub 给个 **⭐⭐⭐⭐⭐ 5 星好评**
+2. 分享给其他 OpenClaw 用户
+3. 提交 Issue 或 PR 改进
+
+**你的评分对我们很重要！** 帮助更多人发现这个技能。
+
+---
+
+## 🔗 相关技能推荐
+
+安装了这个技能的用户也安装了：
+
+| 技能 | 作用 | 推荐度 |
+|------|------|--------|
+| [auto-backup](../auto-backup) | 自动备份 | ⭐⭐⭐⭐⭐ |
+| [model-switch](../model-switch) | 模型切换 | ⭐⭐⭐⭐ |
+| [search-pro](../search-pro) | 联网搜索 | ⭐⭐⭐⭐ |
+
+**推荐组合安装：**
+```bash
+npx clawhub install openclaw-auto-backup
+npx clawhub install openclaw-model-switch
+npx clawhub install openclaw-search-pro
+```
+
+---
+
+
 强大的记忆管理工具，让 AI 记住所有重要信息。
 
 [English Version](README_EN.md)
