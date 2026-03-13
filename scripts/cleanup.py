@@ -30,6 +30,36 @@ def log_success(msg): print(f"{Colors.GREEN}[SUCCESS]{Colors.NC} {msg}")
 def log_warning(msg): print(f"{Colors.YELLOW}[WARNING]{Colors.NC} {msg}")
 def log_error(msg): print(f"{Colors.RED}[ERROR]{Colors.NC} {msg}")
 
+def ensure_daily_memory():
+    """确保今日记忆文件存在"""
+    today = datetime.now().strftime('%Y-%m-%d')
+    today_file = MEMORY_DIR / f"{today}.md"
+    
+    if not today_file.exists():
+        today_file.parent.mkdir(parents=True, exist_ok=True)
+        content = f"""# Daily Memory - {today}
+
+## 日期
+{datetime.now().strftime('%Y 年 %m 月 %d 日 %A')}
+
+## 主要工作
+
+[待填写]
+
+## 系统状态
+
+[待填写]
+
+---
+*最后更新：{today}*
+"""
+        today_file.write_text(content, encoding='utf-8')
+        log_success(f"已创建今日记忆文件：{today_file.name}")
+        return True
+    else:
+        log_info(f"今日记忆文件已存在：{today_file.name}")
+        return False
+
 def cleanup_memory(days: int = 30, dry_run: bool = False):
     """清理过期记忆文件
     
@@ -39,6 +69,9 @@ def cleanup_memory(days: int = 30, dry_run: bool = False):
     """
     print(f"🧹 Memory Cleaner - 记忆清理工具")
     print("=" * 50)
+    
+    # 确保今日记忆文件存在
+    ensure_daily_memory()
     
     if not MEMORY_DIR.exists():
         log_warning("记忆目录不存在")

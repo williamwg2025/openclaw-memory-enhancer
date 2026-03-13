@@ -1,11 +1,25 @@
 ---
-name: memory-enhancer
-displayName: Memory Enhancer
+name: openclaw-memory-enhancer
+displayName: OpenClaw Memory Enhancer - 记忆增强助手
 version: 1.2.1
-description: 记忆增强助手，支持语义搜索、自动提炼、智能分类、Token 优化、定时任务。会写入配置文件和日志到技能目录。
+description: |
+  OpenClaw 记忆增强助手 - 让 AI 记住所有重要信息，不再遗漏关键内容。
+  支持语义搜索、自动提炼、智能分类、Token 优化、定时任务。
+  优化 token 消耗 30-60%，自动压缩旧记忆。
+  关键词：openclaw, memory, search, ai, productivity, optimization, token, rag
 license: MIT-0
 acceptLicenseTerms: true
-tags: memory, search, ai, productivity, optimization, scheduled-tasks, file-write
+tags:
+  - openclaw
+  - memory
+  - search
+  - ai
+  - productivity
+  - optimization
+  - token-optimizer
+  - scheduled-tasks
+  - rag
+  - semantic-search
 ---
 
 # Memory Enhancer - 记忆增强助手
